@@ -10,7 +10,7 @@ body {
 }
 
 .container {
-  max-width: 700px;
+  max-width: 800px;
   margin: 40px auto;
   padding: 30px;
   background: white;
@@ -26,7 +26,26 @@ h1 {
 p {
   text-align: center;
   color: #666;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
+}
+
+/* Switch bahasa & mode */
+.lang-switch, .mode-switch, .template-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.lang-switch label, .mode-switch label {
+  margin: 0 10px;
+  font-weight: bold;
+  color: #2980b9;
+}
+
+.template-section label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #2c3e50;
 }
 
 form {
@@ -40,9 +59,7 @@ label {
   color: #2c3e50;
 }
 
-input[type="text"],
-textarea,
-select {
+input[type="text"], textarea, select {
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -63,7 +80,7 @@ button {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 15px;
   transition: background 0.3s;
 }
 
@@ -86,6 +103,7 @@ button:hover {
   border-radius: 8px;
   background: #f8f9fa;
   font-family: monospace;
+  resize: vertical;
 }
 
 #copyBtn {
