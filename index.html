@@ -3,19 +3,52 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Generator Prompt Gambar AI</title>
+  <title>Generator Prompt AI - Gambar & Video</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>✨ Generator Prompt Gambar AI</h1>
-    <p>Masukkan detail gambar yang kamu inginkan, lalu dapatkan prompt siap pakai untuk Qwen, DALL·E, Midjourney, dll.</p>
+    <h1>✨ Generator Prompt AI</h1>
+    <p>Buat prompt optimal untuk gambar atau video AI. Pilih template, isi detail, dan dapatkan prompt siap pakai!</p>
+
+    <!-- Pilih Bahasa -->
+    <div class="lang-switch">
+      <label>
+        <input type="radio" name="lang" value="id" checked> Bahasa Indonesia
+      </label>
+      <label>
+        <input type="radio" name="lang" value="en"> English
+      </label>
+    </div>
+
+    <!-- Mode: Gambar atau Video -->
+    <div class="mode-switch">
+      <label>
+        <input type="radio" name="mode" value="image" checked> Gambar
+      </label>
+      <label>
+        <input type="radio" name="mode" value="video"> Video
+      </label>
+    </div>
+
+    <!-- Template -->
+    <div class="template-section">
+      <label>Pilih Template:</label>
+      <select id="template">
+        <option value="custom">Buat Kustom</option>
+        <option value="logo">Logo</option>
+        <option value="character">Karakter</option>
+        <option value="product">Produk</option>
+      </select>
+    </div>
 
     <form id="promptForm">
-      <label>Subjek Utama (contoh: kucing cyberpunk, istana pasir, pahlawan super):</label>
-      <input type="text" id="subject" placeholder="Misalnya: seorang penjelajah di planet Mars" required />
+      <!-- Subjek -->
+      <label id="subjectLabel">Subjek Utama</label>
+      <input type="text" id="subject" placeholder="" required />
 
-      <label>Gaya Seni:</label>
+      <!-- Gaya Seni -->
+      <label id="styleLabel">Gaya Seni</label>
       <select id="style">
         <option value="">Pilih gaya...</option>
         <option value="realistic photo">Fotorealistik</option>
@@ -26,25 +59,31 @@
         <option value="cyberpunk">Cyberpunk</option>
         <option value="watercolor">Cat Air</option>
         <option value="minimalist">Minimalis</option>
-        <option value="studio ghibli">Studio Ghibli Style</option>
+        <option value="studio ghibli">Studio Ghibli</option>
         <option value="pixar">Pixar 3D</option>
+        <option value="sketch">Sketsa</option>
+        <option value="vector art">Vector Art</option>
       </select>
 
-      <label>Pencahayaan:</label>
+      <!-- Pencahayaan -->
+      <label id="lightingLabel">Pencahayaan</label>
       <select id="lighting">
         <option value="">Pilih pencahayaan...</option>
         <option value="natural light">Cahaya alami</option>
-        <option value="golden hour">Golden hour (matahari terbenam)</option>
+        <option value="golden hour">Golden hour</option>
         <option value="dramatic lighting">Pencahayaan dramatis</option>
-        <option value="neon lights">Lampu neon</option>
+        <option value="neon lights">Neon</option>
         <option value="soft diffused light">Cahaya lembut</option>
-        <option value="studio lighting">Lighting studio</option>
+        <option value="studio lighting">Studio lighting</option>
+        <option value="backlight">Backlight</option>
       </select>
 
-      <label>Warna Dominan (opsional):</label>
-      <input type="text" id="color" placeholder="Misalnya: biru elektrik dan ungu gelap" />
+      <!-- Warna -->
+      <label id="colorLabel">Warna / Palet</label>
+      <input type="text" id="color" placeholder="" />
 
-      <label>Suasana / Mood:</label>
+      <!-- Mood -->
+      <label id="moodLabel">Suasana / Mood</label>
       <select id="mood">
         <option value="">Pilih suasana...</option>
         <option value="epic, grand, majestic">Epik & megah</option>
@@ -53,16 +92,20 @@
         <option value="futuristic, high-tech">Futuristik</option>
         <option value="dreamy, magical">Mimpi & ajaib</option>
         <option value="action-packed, dynamic">Aksi & energik</option>
+        <option value="fun, playful">Lucu & ceria</option>
+        <option value="elegant, luxurious">Elegan & mewah</option>
       </select>
 
-      <label>Detail Tambahan (opsional):</label>
-      <textarea id="details" placeholder="Tambahkan detail seperti ekspresi, kostum, latar, dll..."></textarea>
+      <!-- Detail Tambahan -->
+      <label id="detailsLabel">Detail Tambahan</label>
+      <textarea id="details" placeholder=""></textarea>
 
       <button type="submit">🚀 Hasilkan Prompt</button>
     </form>
 
+    <!-- Hasil -->
     <div id="result" class="result-box" style="display: none;">
-      <h2>Prompt Hasil (siap salin):</h2>
+      <h2 id="resultTitle">Prompt Hasil:</h2>
       <textarea id="outputPrompt" rows="5" readonly></textarea>
       <button id="copyBtn">📋 Salin ke Clipboard</button>
     </div>
